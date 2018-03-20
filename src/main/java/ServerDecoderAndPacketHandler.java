@@ -29,6 +29,20 @@ public class ServerDecoderAndPacketHandler extends SimpleChannelInboundHandler<D
     private ArrayList<SocketAddress> socketAddresses = new ArrayList<SocketAddress>();
     private SocketAddress socketAddress;
 
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, DatagramPacket msg) throws Exception {
+        setDirection messageIn = getSetDirection(msg);
+        addSocketAddress(msg);
+        send(ctx,msg);
+        //Вывод в консоль для проверки отправленных данных
+        System.out.println("Сервер получил сообщение DirectionX: " + messageIn.getDirectionX() + " DirectionY: " + messageIn.getDirectionY());
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        cause.printStackTrace();
+    }
+
     private setDirection getSetDirection(DatagramPacket packet) throws InvalidProtocolBufferException {
         //Забираем контент из DatagramPacket
         final ByteBuf byteBuf = packet.content();
@@ -77,19 +91,5 @@ public class ServerDecoderAndPacketHandler extends SimpleChannelInboundHandler<D
         ctx.writeAndFlush(messageOut);
         //Закрываем подключение с клиентом
         ctx.disconnect();
-    }
-
-    @Override
-    protected void channelRead0(ChannelHandlerContext ctx, DatagramPacket msg) throws Exception {
-        setDirection messageIn = getSetDirection(msg);
-        addSocketAddress(msg);
-        send(ctx,msg);
-        //Вывод в консоль для проверки отправленных данных
-        System.out.println("Сервер получил сообщение DirectionX: " + messageIn.getDirectionX() + " DirectionY: " + messageIn.getDirectionY());
-    }
-
-    @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        cause.printStackTrace();
     }
 }
