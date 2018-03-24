@@ -4,9 +4,8 @@ import java.io.IOException;
 
 /**
  * Class is reponsible for server configuration properties from the specified {@link java.util.Properties} file.
- * @see #getDbClassPath() Class path for class loader inside {@link DBHandler}
- * @see #getDbConnectionURL() JDBC connection string for {@link DBHandler}
- * @see #getServerPort() Port server listens
+ *
+ * @author Raserei
  */
 public class ServerConfiguration extends Configuration {
     private static final String DBDRIVER_PROP_NAME = "dbDriver";
@@ -50,6 +49,7 @@ public class ServerConfiguration extends Configuration {
     }
 
     /**
+     *
      * @return JDBC driver path for the ClassLoader
      */
     public String getDbClassPath() {
@@ -57,6 +57,7 @@ public class ServerConfiguration extends Configuration {
     }
 
     /**
+     *
      * @return Database connection URL
      */
     public String getDbConnectionURL() {
@@ -64,6 +65,7 @@ public class ServerConfiguration extends Configuration {
     }
 
     /**
+     *
      * @return server port
      */
     public int getServerPort() {

@@ -7,9 +7,8 @@ import java.sql.SQLException;
 
 /**
  * @author Raserei
- *         Class handles database connection.
- * @see #DBHandler(String, String) establishes a connection
- * @see #close() closes connection and MUST be used while server shutting down
+ *
+ * Class handles database connection.
  */
 public class DBHandler {
     private Connection connection;

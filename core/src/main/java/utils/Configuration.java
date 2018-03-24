@@ -5,8 +5,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * @author Raserei
  * Abstract class for working with *.properties configurations
+ *
+ * @author Raserei
  */
 public abstract class Configuration{
     protected FileInputStream fileInputStream;
