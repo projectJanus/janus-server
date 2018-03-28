@@ -61,7 +61,6 @@ public class NPCSkyObjectEmitter {
                 generateTimers.put(type, 0f);
                 NPCSkyObject npcSkyObject = npcSkyObjectPool.obtain();
                 npcSkyObject.set(reference.get(0),
-                        //Achtung! Not tested!
                         new Vector2(Rnd.nextFloat(0, worldBounds.getPos().x), Rnd.nextFloat(0, worldBounds.getPos().y)));
             }
         }
