@@ -1,13 +1,12 @@
 package utils.math;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 /**
  * Random generator
  */
 public class Rnd {
-    private static final Random random = new Random();
-
+    private static final SecureRandom random = new SecureRandom();
     /**
      * Generate random float
      *
